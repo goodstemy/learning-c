@@ -21,8 +21,6 @@ int testAppend(int n) {
   for (int i = 0; i < n; i++) {
     list = append(i, list);
     numbers[i] = i;
-
-    printf("%d %d\n", i, list->size);
   }
 
   struct Node* head = list->head;
@@ -40,6 +38,30 @@ int testAppend(int n) {
   return 0;
 }
 
+int testPrepend(int n) {
+  struct List* list = newList();
+  int numbers[n];
+
+  for (int i = n - 1; i >= 0; i--) {
+    list = prepend(i, list);
+    numbers[i] = i;
+  }
+
+  struct Node* head = list->head;
+  int i = n - 1;
+
+  while(head != NULL) {
+    if (numbers[i] != head->data) {
+      return 1;
+    }
+
+    head = head->next;
+    i--;
+  }
+
+  return 0; 
+}
+
 int main() {
   if (testInit()) {
     printf(ANSI_COLOR_RED "testInit() Failed!" ANSI_COLOR_RED "\n");
@@ -54,6 +76,13 @@ int main() {
   }
 
   printf(ANSI_COLOR_GREEN "testAppend(n) Success!" ANSI_COLOR_GREEN "\n");
+
+  if (testPrepend(1)) {
+    printf(ANSI_COLOR_RED "testPrepend(n) Failed!" ANSI_COLOR_RED "\n");
+    return 1;
+  }
+
+  printf(ANSI_COLOR_GREEN "testPrepend(n) Success!" ANSI_COLOR_GREEN "\n");
 
   return 0;
 }

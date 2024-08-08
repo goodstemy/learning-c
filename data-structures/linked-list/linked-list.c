@@ -20,17 +20,26 @@ struct List* newList() {
   return list;
 };
 
-struct List prepend(int data, struct List* list) {
-  // @TODO:
-  // struct Node newHead;
-  // struct Node* oldHead = list->head;
+struct List* prepend(int data, struct List* list) {
+  struct Node* newHead;
+  struct Node* oldHead = list->head;
 
-  // newHead.data = data;
-  // newHead.next = oldHead;
+  newHead = (struct Node*) malloc(sizeof(*newHead));
+  newHead->data = data;
 
-  // list->head = &newHead;
+  // on first element
+  if (oldHead == NULL) {
+    list->head = newHead;
 
-  // return (*list);
+    list->size++;
+    return list;
+  }
+
+  // on N element
+  newHead->next = list->head;
+  list->head = newHead;
+
+  return list;
 }
 
 struct List* append(int data, struct List* list) {
