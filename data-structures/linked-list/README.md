@@ -8,6 +8,8 @@ docker build --tag 'c-linked-list' . && docker run c-linked-list
 
 # Performance:
 
-*append(int)* - O(n)
+`append(int, List*)` - O(n)
 
-*prepend(int)* - O(1)
+`prepend(int, List*)` - O(1)
+
+`appendAt(int, int, List*)` - O(n)

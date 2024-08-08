@@ -13,7 +13,8 @@ struct List {
 };
 
 struct List* newList();
-struct List* prepend();
-struct List* append();
+struct List* prepend(int, struct List*);
+struct List* append(int, struct List*);
+struct List* appendAt(int, int, struct List*);
 
 #endif

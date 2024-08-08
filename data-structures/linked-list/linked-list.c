@@ -81,3 +81,48 @@ struct List* append(int data, struct List* list) {
   list->size++;
   return list;
 }
+
+struct List* appendAt(int data, int at, struct List* list) {
+  if (at > list->size) {
+    printf("Error: Append at N > size.");
+    return list;
+  }
+
+  if (at < 0) {
+    printf("Error: Append at N < 0.");
+    return list;
+  }
+
+  if (at == 0) {
+    return prepend(data, list);
+  }
+
+  if (at == list->size) {
+    return append(data, list);
+  }
+
+  struct Node* prevNode = list->head;
+  struct Node* node = list->head;
+
+  /**
+   * @TODO 
+   * smth wrong with index
+   */
+  int n = 1;
+  while(n != at - 1) {
+    prevNode = node;
+    node = node->next;
+
+    n++;
+  }
+
+  struct Node* newNode;
+
+  newNode = (struct Node*) malloc(sizeof(*newNode));
+  newNode->data = data;
+  newNode->next = prevNode->next;
+
+  node->next = newNode;
+
+  return list;
+}

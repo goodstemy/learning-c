@@ -62,6 +62,35 @@ int testPrepend(int n) {
   return 0; 
 }
 
+int testAppendAt(int size, int at) {
+  struct List* list = newList();
+
+  int numbers[size];
+
+  for (int i = 0; i < size - 1; i++) {
+    list = append(i, list);
+    numbers[i] = i;
+  }
+
+  int data = size * 2;
+  list = appendAt(data, at, list);
+
+  struct Node* node = list->head;
+
+  int n = 0;
+  while(n != at) {
+    node = node->next;
+
+    n++;
+  }
+
+  if (node->data != data) {
+    return 1;
+  }
+
+  return 0;
+}
+
 int main() {
   if (testInit()) {
     printf(ANSI_COLOR_RED "testInit() Failed!" ANSI_COLOR_RED "\n");
@@ -83,6 +112,13 @@ int main() {
   }
 
   printf(ANSI_COLOR_GREEN "testPrepend(n) Success!" ANSI_COLOR_GREEN "\n");
+
+  if (testAppendAt(100, 4)) {
+    printf(ANSI_COLOR_RED "testAppendAt(n, at) Failed!" ANSI_COLOR_RED "\n");
+    return 1;
+  }
+
+  printf(ANSI_COLOR_GREEN "testAppendAt(n, at) Success!" ANSI_COLOR_GREEN "\n");
 
   return 0;
 }
