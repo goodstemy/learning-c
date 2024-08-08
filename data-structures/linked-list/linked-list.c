@@ -21,6 +21,7 @@ struct List* newList() {
 };
 
 struct List prepend(int data, struct List* list) {
+  // @TODO:
   // struct Node newHead;
   // struct Node* oldHead = list->head;
 
@@ -71,30 +72,3 @@ struct List* append(int data, struct List* list) {
   list->size++;
   return list;
 }
-
-
-// int main() {
-//   struct List list = newList();
-//   struct Node* head = list.head;
-//   struct Node* ptr = head->ptr;
-
-//   if (ptr == NULL) {
-//     printf("==");
-//   } else {
-//     printf("++");
-//   }
-
-//   // printf("%s", head->ptr);
-
-//   // if (head->ptr == NULL) {
-//   //   printf("hey");
-//   // }
-
-//   // while (head->ptr != NULL) {
-//   //   printf("%d", head->data);
-
-//   //   head = head->ptr;
-//   // }
-
-//   return 0;
-// }

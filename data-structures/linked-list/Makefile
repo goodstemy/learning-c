@@ -1,2 +1,2 @@
 all:
-	gcc main.c linked-list.c -o main
+	gcc test.c linked-list.c -o main
