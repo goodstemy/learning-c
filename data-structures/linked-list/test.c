@@ -75,9 +75,9 @@ int testAppendAt(int size, int at) {
   int data = size * 2;
   list = appendAt(data, at, list);
 
-  struct Node* node = list->head;
+  struct Node* node = list->head->next;
 
-  int n = 0;
+  int n = 1;
   while(n != at) {
     node = node->next;
 

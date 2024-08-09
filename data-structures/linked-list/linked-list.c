@@ -104,12 +104,8 @@ struct List* appendAt(int data, int at, struct List* list) {
   struct Node* prevNode = list->head;
   struct Node* node = list->head;
 
-  /**
-   * @TODO 
-   * smth wrong with index
-   */
   int n = 1;
-  while(n != at - 1) {
+  while(n != at) {
     prevNode = node;
     node = node->next;
 
