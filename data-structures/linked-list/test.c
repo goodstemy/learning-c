@@ -91,6 +91,39 @@ int testAppendAt(int size, int at) {
   return 0;
 }
 
+int testDeleteAt(int at) {
+  struct List* list = newList();
+
+  int size = 100;
+  int numbers[size];
+
+  for (int i = 0; i < size - 1; i++) {
+    list = append(i, list);
+    numbers[i] = i;
+  }
+
+  int data = size * 2;
+  list = deleteAt(at, list);
+
+  struct Node* node = list->head->next;
+
+  int n = 0;
+  while(n < list->size-1) {
+    node = node->next;
+
+    if (!node) {
+      break;
+    }
+
+    if (node->data == data) {
+      return 1;
+    }
+    n++;
+  }
+
+  return 0;
+}
+
 int main() {
   if (testInit()) {
     printf(ANSI_COLOR_RED "testInit() Failed!" ANSI_COLOR_RED "\n");
@@ -119,6 +152,13 @@ int main() {
   }
 
   printf(ANSI_COLOR_GREEN "testAppendAt(n, at) Success!" ANSI_COLOR_GREEN "\n");
+
+   if (testDeleteAt(4)) {
+    printf(ANSI_COLOR_RED "testDeleteAt(at) Failed!" ANSI_COLOR_RED "\n");
+    return 1;
+  }
+
+  printf(ANSI_COLOR_GREEN "testDeleteAt(at) Success!" ANSI_COLOR_GREEN "\n");
 
   return 0;
 }

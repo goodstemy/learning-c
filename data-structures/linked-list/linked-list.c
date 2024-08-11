@@ -122,3 +122,35 @@ struct List* appendAt(int data, int at, struct List* list) {
 
   return list;
 }
+
+struct List* deleteAt(int at, struct List* list) {
+  if (at > list->size) {
+    printf("Error: Delete at N > size.");
+    return list;
+  }
+
+  if (at < 0) {
+    printf("Error: Delete at N < 0.");
+    return list;
+  }
+
+  if (at == 0) {
+    list->head = list->head->next;
+    return 0;
+  }
+
+  struct Node* prevNode = list->head;
+  struct Node* nextNode = list->head->next;
+
+  int n = 1;
+  while(n != at) {
+    prevNode = prevNode->next;
+    nextNode = nextNode->next;
+
+    n++;
+  }
+
+  prevNode->next = nextNode->next;
+  list->size--;
+  return list;
+}

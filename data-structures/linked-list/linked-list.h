@@ -16,5 +16,6 @@ struct List* newList();
 struct List* prepend(int, struct List*);
 struct List* append(int, struct List*);
 struct List* appendAt(int, int, struct List*);
+struct List* deleteAt(int, struct List*);
 
 #endif
